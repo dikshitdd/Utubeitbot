@@ -9,7 +9,7 @@ class Messages:
         "\n **__Watch On Google Drive: [Click Here.](https://drive.google.com/file/d/12qp4VcvBOVwhMIx0O5CtO5VvUbCDeFKs/view)__**"
         "\n\n**__You can know more from /help.__**"
         "\n**__Or use /login to get started.__**"
-        "\n\n**__Join @HXBots for More Bots...__**"
+        "\n\n**__Join @DigitalRelease for More Bots...__**"
     )
 
     HELP_MSG = [
