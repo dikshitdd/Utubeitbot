@@ -23,11 +23,11 @@ async def _start(c: UtubeBot, m: Message):
                       InlineKeyboardButton("How To Use Me🙄", callback_data="/help")
                   ],
                   [
-                      InlineKeyboardButton("Project Channel!", url="https://t.me/hxbots"),
-                      InlineKeyboardButton("Support Group", url="https://t.me/HxSupport")
+                      InlineKeyboardButton("Project Channel!", url="https://t.me/DigitalRelease"),
+                      InlineKeyboardButton("Support Group", url="https://t.me/DigitalReleaseGroup")
                   ],
                   [  
-                      InlineKeyboardButton("Buy Me A Tea", url="https://upayme.vercel.app/kkirodewal@ybl")
+                      InlineKeyboardButton("Buy Me A Tea", url="https://upayme.vercel.app/dextin@ybl")
                   ]]
         ),
     )
