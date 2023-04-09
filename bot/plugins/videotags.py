@@ -12,7 +12,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 # Create a Telegram bot object
-bot = telegram.Bot(token=Config.BOT_TOKEN)
+bot = telegram.Bot(token='6087235270:AAHrTG64JsnqH--g86KBBtUwh9db3BA9yO8')
 
 # Define a function to handle incoming messages
 def handle_message(update, context):
@@ -38,6 +38,3 @@ def main():
     updater = telegram.ext.Updater(token=Config.BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.text, handle_message))
-
-if name == 'main':
-    main()
