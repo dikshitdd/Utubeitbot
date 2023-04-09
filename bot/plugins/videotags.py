@@ -2,7 +2,7 @@ import telegram
 import logging
 import urllib.request
 from youtubetags import fetch_video_tags
-from utubeitbo import get_video_url
+from utubeitbot import get_video_url
 from .config import Config
 
 
