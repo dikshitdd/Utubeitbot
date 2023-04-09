@@ -29,6 +29,3 @@ dispatcher.add_handler(start_handler)
 # Set up a message handler
 message_handler = telegram.ext.MessageHandler(telegram.ext.Filters.text, handle_message)
 dispatcher.add_handler(message_handler)
-
-# Start the bot
-updater.start_polling()
