@@ -2,8 +2,8 @@ import telegram
 from telegram.ext import Updater, CommandHandler
 from youtubetags import YouTubeTags
 
-# Define a function to handle the /start command
-def start(update, context):
+# Define a function to handle the /tags command
+def tags(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hi! Send me a YouTube video URL and I'll fetch its tags.")
 
 # Define a function to handle incoming messages
