@@ -1,40 +1,31 @@
 import telegram
 import logging
-import urllib.request
-from youtubetags import fetch_video_tags
-from utubeitbot import get_video_url
+from telegram.ext import Updater, CommandHandler
+from youtubetags import YouTubeTags
+from Utubeitbot import UtubeBot
 from .config import Config
 
-
-
-# Set up logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
-
-# Create a Telegram bot object
-bot = telegram.Bot(token='6087235270:AAHrTG64JsnqH--g86KBBtUwh9db3BA9yO8')
+# Define a function to handle the /tags command
+def tags(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hi! Send me a YouTube video URL and I'll fetch its tags.")
 
 # Define a function to handle incoming messages
 def handle_message(update, context):
-    # Get the message text
-    message_text = update.message.text
-    
-    # Check if the message contains a valid YouTube URL
-    if 'youtube.com' in message_text or 'youtu.be' in message_text:
-        # Get the video URL
-        video_url = get_video_url(message_text)
-        
-        # Fetch the video tags
-        video_tags = fetch_video_tags(video_url)
-        
-        # Send the tags back to the user
-        update.message.reply_text('Tags for {}: {}'.format(video_url, ', '.join(video_tags)))
+    url = update.message.text
+    tags = YouTubeTags.get_tags(url)
+    if tags:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Tags: {}".format(", ".join(tags)))
     else:
-        # Send a message to the user asking for a YouTube URL
-        update.message.reply_text('Please provide a valid YouTube URL.')
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I couldn't fetch the tags. Please check if the URL is correct.")
 
-# Start the bot
-def main():
-    updater = telegram.ext.Updater(token=Config.BOT_TOKEN, use_context=True)
-    dp = updater.dispatcher
-    dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.text, handle_message))
+# Create a Telegram bot object and set up a CommandHandler
+bot_token = Config.BOT_TOKEN,
+bot = telegram.Bot(token=bot_token)
+updater = Updater(token=bot_token, use_context=True)
+dispatcher = updater.dispatcher
+start_handler = CommandHandler('tags', tags)
+dispatcher.add_handler(start_handler)
+
+# Set up a message handler
+message_handler = telegram.ext.MessageHandler(telegram.ext.Filters.text, handle_message)
+dispatcher.add_handler(message_handler)
