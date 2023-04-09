@@ -26,4 +26,3 @@ six==1.16.0
 TgCrypto==1.2.2
 uritemplate==3.0.1
 urllib3==1.26.7
-YoutubeTags
